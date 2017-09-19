@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container">
+      <div id="video-meta">
+        <h2>Actual Video Info</h2>
+        <table class="table table-condensed">
+          <tr>
+            <th>Resolution</th>
+            <th>Aspect Ratio</th>
+          </tr>
+          <tr>
+            <td id="video-resolution"></td>
+            <td id="video-aspect-ratio"></td>
+          </tr>
+        </table>
+
+        <h2>Requested Constraints</h2>
+        <pre id="constraints"></pre>
+      </div>
+      <div class="controls">
+        <label for="camera-selector">Camera</label>
+        <select id="camera-selector">
+        </select>
+      </div>
+      <video id="video-output" preload="metadata"></video>
+    </div>
+
+    <script id="camera-options-template" type="x-underscore-template">
+      <% _.each(devices, function(device) { %>
+        <option value="<%= device.deviceId %>"><%= device.label %></option>
+      <% }) %>
+    </script>
+    <script type="text/javascript" src="/js/underscore-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/adapter.js"></script>
+    <script type="text/javascript" src="/js/gum.js"></script>
+  </body>
+</html>
